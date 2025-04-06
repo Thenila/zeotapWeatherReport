@@ -23,6 +23,13 @@ def store_daily_summary(summary):
     cursor.execute('''
         INSERT INTO weather_summary (city, date, avg_temp, max_temp, min_temp, dominant_condition)
         VALUES (?, ?, ?, ?, ?, ?)
-    ''', (summary['city'], summary['date'], summary['avg_temp'], summary['max_temp'], summary['min_temp'], summary['dominant_condition']))
+    ''', (
+        summary['city'],
+        summary['date'],
+        summary['avg_temp'],
+        summary['max_temp'],
+        summary['min_temp'],
+        summary['dominant_condition']
+    ))
     conn.commit()
     conn.close()

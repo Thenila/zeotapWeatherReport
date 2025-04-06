@@ -1,7 +1,7 @@
 from datetime import time
 import statistics
 from collections import Counter
-from database import store_daily_summary
+from db import store_daily_summary
 
 def calculate_daily_summary(city, weather_data):
     temperatures = [entry['temp'] for entry in weather_data]
