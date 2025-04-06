@@ -1,27 +1,26 @@
 import time
 import requests
 from weather_service import get_weather_data, process_weather_data
-from db import init_db  # ✅ Add this line
+from db import init_db  
 
-# Constants and configuration
 CITIES = ['Delhi', 'Mumbai', 'Erode', 'Bangalore', 'Kolkata', 'Hyderabad']
-INTERVAL = 300  # Time interval in seconds (e.g., 300 seconds for 5 minutes)
+INTERVAL = 300  
 
 def main():
     print("Starting the Weather Monitoring System...")
 
-    init_db()  # ✅ Initialize DB and ensure the table exists
+    init_db()  
 
     try:
         while True:
             for city in CITIES:
                 print(f"\nFetching weather data for {city}...")
-                weather_data = get_weather_data(city)  # Fetch the weather data
+                weather_data = get_weather_data(city)  
                 if weather_data:
-                    process_weather_data(weather_data)  # Process and store summary
+                    process_weather_data(weather_data)  
 
             print(f"Waiting for {INTERVAL} seconds before the next update...\n")
-            time.sleep(INTERVAL)  # Wait for the defined interval
+            time.sleep(INTERVAL)  
 
     except KeyboardInterrupt:
         print("\nProgram stopped by the user.")
